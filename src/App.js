@@ -1,20 +1,24 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-const cors = require("cors");
-app.use(cors());
 
-import ShowArticle from "./components/ShowArticle";
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Header from "./components/Header";
-import Article from "./components/Article";
+import Articles from "./components/Articles";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   return (
     <div>
       <NavBar />
       <Header />
-      <Article />
-      <Route path="/article/:article_id" element={<ShowArticle />}></Route>
+      <Articles />
+      <Routes>
+        <Route path="/" element={<Articles />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/:topic" element={<Articles />} />
+        <Route path="/articles/:article_id" element={<SingleArticle />} />
+      </Routes>
     </div>
   );
 }
