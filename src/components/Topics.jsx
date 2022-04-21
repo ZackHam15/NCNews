@@ -10,7 +10,7 @@ const TopicList = ({ articles, setArticles }) => {
   return articles.map((article) => {
     return (
       <li key={article.article_id} className="article-list">
-        <Link to={`/article/${article.article_id}`}>
+        <Link to={`/articles/${article.article_id}`}>
           <h2>{article.title}</h2>
         </Link>
         <h3>{article.author}</h3>

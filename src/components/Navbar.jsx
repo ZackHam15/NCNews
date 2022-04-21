@@ -17,7 +17,7 @@ return (
 <Navbar.Brand>Northcoders News</Navbar.Brand>
 <Nav className="navlink">
 <ul>
-<Link to="/article">
+<Link to="/articles">
 <li className="navList">Articles List</li>
 </Link>
 </ul>
