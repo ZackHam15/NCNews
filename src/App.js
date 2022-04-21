@@ -6,6 +6,7 @@ import NavBar from "./components/Navbar";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import Topics from "./components/Topics";
 import { useState } from "react";
 
 function App() {
@@ -15,8 +16,14 @@ function App() {
       <NavBar />
       <Header />
       <Routes>
-        <Route path="/articles" element={<Articles />} />
-        <Route path="/:topic" element={<Articles />} />
+        <Route
+          path="/articles"
+          element={<Topics setArticles={setArticles} articles={article} />}
+        />
+        <Route
+          path="/articles/:topic"
+          element={<Topics setArticles={setArticles} articles={article} />}
+        />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
