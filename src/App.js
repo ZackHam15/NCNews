@@ -6,15 +6,15 @@ import NavBar from "./components/Navbar";
 import Header from "./components/Header";
 import Articles from "./components/Articles";
 import SingleArticle from "./components/SingleArticle";
+import { useState } from "react";
 
 function App() {
+  const [article, setArticles] = useState([]);
   return (
-    <div>
+    <div className="App">
       <NavBar />
       <Header />
-      <Articles />
       <Routes>
-        <Route path="/" element={<Articles />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />

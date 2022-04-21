@@ -10,6 +10,9 @@ const NavBar = () => {
           <Nav.Link as={Link} to="/">
             Home
           </Nav.Link>
+          <Nav.Link as={Link} to="/articles">
+            Articles
+          </Nav.Link>
         </Nav>
       </Container>
     </Navbar>
