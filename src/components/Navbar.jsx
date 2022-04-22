@@ -12,35 +12,28 @@ setTopics(apiTopics)
 })
 }, []);
 return (
-<Navbar bg="dark" variant="dark">
-<Container>
-<Navbar.Brand>Northcoders News</Navbar.Brand>
-<Nav className="navlink">
-<ul>
-<Link to="/articles">
-<li className="navList">Articles List</li>
-</Link>
-</ul>
-<NavDropdown title="Topics" id="navDropdown">
-{topics.map((topic) => {
-return (
-<NavDropdown.Item 
-key={topic.slug}
-as={Link}
-to={`/articles/${topic.slug}`}
-> {" "}
-<li className="navList" key={topic.slug}>
-{topic.slug}
-</li>
-)
-</NavDropdown.Item>
-)
-})}
-</NavDropdown>
-</Nav>
-</Container>
-</Navbar>
-);
+    <Navbar bg="dark">
+      <Container>
+        <Navbar.Brand>Northcoders News</Navbar.Brand>
+        <Nav className="me-auto">
+          <Nav.Link as={Link} to="/">
+            Home
+          </Nav.Link>
+          <NavDropdown title="Topics" id="dropdown">
+            {topics.map((topic) => (
+              <NavDropdown.Item
+                key={topic.slug}
+                as={Link}
+                to={`/${topic.slug}`}
+              >
+                {topic.slug.charAt(0).toUpperCase() + topic.slug.slice(1)}
+              </NavDropdown.Item>
+            ))}
+          </NavDropdown>
+        </Nav>
+      </Container>
+    </Navbar>
+  );
 };
 
 export default NavBar;

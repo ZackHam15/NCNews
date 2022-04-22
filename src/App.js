@@ -10,20 +10,14 @@ import Topics from "./components/Topics";
 import { useState } from "react";
 
 function App() {
-  const [article, setArticles] = useState([]);
   return (
     <div className="App">
       <NavBar />
       <Header />
       <Routes>
-        <Route
-          path="/articles"
-          element={<Topics setArticles={setArticles} articles={article} />}
-        />
-        <Route
-          path="/articles/:topic"
-          element={<Topics setArticles={setArticles} articles={article} />}
-        />
+        <Route path="/" element={<Articles />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/:topic" element={<Articles />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
       </Routes>
     </div>
