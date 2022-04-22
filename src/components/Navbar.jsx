@@ -12,7 +12,7 @@ setTopics(apiTopics)
 })
 }, []);
 return (
-    <Navbar bg="dark">
+    <Navbar bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>Northcoders News</Navbar.Brand>
         <Nav className="me-auto">
