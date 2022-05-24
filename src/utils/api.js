@@ -26,3 +26,23 @@ export const singleArticle = (article_id) => {
     return data.article;
   });
 };
+
+export const patchInc = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, {
+      inc_votes: 1,
+    })
+    .then((data) => {
+      return data.data.article.votes;
+    });
+};
+
+export const patchDec = (article_id) => {
+  return newsApi
+    .patch(`/articles/${article_id}`, {
+      inc_votes: -1,
+    })
+    .then((data) => {
+      return data.data.article.votes;
+    });
+};

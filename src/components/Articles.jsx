@@ -1,24 +1,35 @@
+import { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import { getArticles } from "../utils/api";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom"
+import { Card } from "react-bootstrap";
 
-const Article = () => {
+const Articles = () => {
   const [articles, setArticles] = useState([]);
-  const { article_id } = useParams();
+  const { topic } = useParams();
+
   useEffect(() => {
-    getArticles(article_id).then((articles) => {
-      setArticles(articles);
+    getArticles(topic).then((articlesFromApi) => {
+      setArticles(articlesFromApi);
     });
-  }, []);
-  return articles.map((article) => {
-    return (
-      <li key={article.article_id} className="article-list">
-        <h2>{article.title}</h2>
-        <p>{article.body}</p>
-        <h3>{article.author}</h3>
-      </li>
-    );
-  });
+  }, [topic]);
+
+  return (
+    <div>
+      {articles.map((article) => (
+        <Card key={article.article_id}>
+          <Link to={`/articles/${article.article_id}`}>
+            <Card.Body>
+              <Card.Title>{article.title}</Card.Title>
+              <Card.Text>By {article.author}</Card.Text>
+            </Card.Body>
+          </Link>
+          <Card.Footer>
+            <small className="text-muted">Topic: {article.topic}</small>
+          </Card.Footer>
+        </Card>
+      ))}
+    </div>
+  );
 };
 
-export default Article;
+export default Articles;
